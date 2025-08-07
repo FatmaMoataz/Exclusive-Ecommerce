@@ -67,3 +67,6 @@ export default tseslint.config([
   },
 ])
 ```
+## Screenshots of Project
+
+![Homepage](https://github.com/user-attachments/assets/0e0800fb-81e2-4ce8-8fae-e108309d38f2)
