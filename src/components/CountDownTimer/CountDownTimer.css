@@ -4,4 +4,5 @@ h2 {
 .flex-center {
     display: flex;
     justify-content: space-around;
+    gap: 2rem;
 }

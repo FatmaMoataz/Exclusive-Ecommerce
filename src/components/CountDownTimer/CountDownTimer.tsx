@@ -44,12 +44,6 @@ export default function CountDownTimer() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-      <Box sx={{ display: 'flex', columnGap: '1rem' }}>
-        <h2>Days</h2>
-        <h2>Hours</h2>
-        <h2>Minutes</h2>
-        <h2>Seconds</h2>
-      </Box>
       <h2 className='flex-center'>
         {timeLeft.days} <span className='text-color'>:</span> {timeLeft.hours} <span className='text-color'>:</span> {timeLeft.minutes} <span className='text-color'>:</span> {timeLeft.seconds}
       </h2>

@@ -2,13 +2,12 @@ import { useState } from 'react';
 import signup_img from '../../assets/images/signup.png';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import SaveIcon from '@mui/icons-material/Save';
 import axios from 'axios';
+import FormInput from '../../components/FormInput/FormInput';
 
 interface LoginFormValues {
   username: string;
@@ -74,37 +73,22 @@ export default function Login() {
           Enter your details below
         </Typography>
         <Box component="form" onSubmit={loginForm.handleSubmit}>
-          <TextField
-            fullWidth
+          <FormInput
             label="Username"
             name="username"
-            value={loginForm.values.username}
-            onChange={loginForm.handleChange}
-            onBlur={loginForm.handleBlur}
-            error={loginForm.touched.username && Boolean(loginForm.errors.username)}
-            helperText={loginForm.touched.username && loginForm.errors.username}
-            variant="standard"
-            sx={{ display: 'block', marginBottom: '1rem' }}
+            formik={loginForm}
           />
-          <TextField
-            fullWidth
+          <FormInput
             label="Password"
             type='password'
             name='password'
-            value={loginForm.values.password}
-            onChange={loginForm.handleChange}
-            onBlur={loginForm.handleBlur}
-            error={loginForm.touched.password && Boolean(loginForm.errors.password)}
-            helperText={loginForm.touched.password && loginForm.errors.password}
-            variant="standard"
-            sx={{ display: 'block', marginBottom: '1rem' }}
+            formik={loginForm}
           />
 
           {
             loading ? (
               <Button
                 disabled
-                endIcon={<SaveIcon />}
                 variant="outlined"
               >
                 Loading

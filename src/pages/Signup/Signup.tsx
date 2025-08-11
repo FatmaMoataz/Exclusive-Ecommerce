@@ -1,7 +1,6 @@
 import signup_img from '../../assets/images/signup.png';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import GoogleIcon from '@mui/icons-material/Google';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -9,6 +8,7 @@ import { useFormik} from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import SaveIcon from '@mui/icons-material/Save';
+import FormInput from '../../components/FormInput/FormInput';
 
 interface FormValues {
   fullName: string;
@@ -88,80 +88,31 @@ export default function Signup() {
         </Typography>
 
         <Box component="form" onSubmit={registerForm.handleSubmit}>
-          <TextField
-            fullWidth
+          <FormInput
             label="Full Name"
             name="fullName"
-            value={registerForm.values.fullName}
-            onChange={registerForm.handleChange}
-            onBlur={registerForm.handleBlur}
-            error={
-              registerForm.touched.fullName &&
-              Boolean(registerForm.errors.fullName)
-            }
-            helperText={
-              registerForm.touched.fullName && registerForm.errors.fullName
-            }
-            variant="standard"
-            sx={{ display: 'block', marginBottom: '1rem' }}
-          />
+            formik={registerForm}
+/>
 
-          <TextField
-            fullWidth
+          <FormInput
             label="Email"
-            type="email"
+            type='email'
             name="email"
-            value={registerForm.values.email}
-            onChange={registerForm.handleChange}
-            onBlur={registerForm.handleBlur}
-            error={
-              registerForm.touched.email &&
-              Boolean(registerForm.errors.email)
-            }
-            helperText={
-              registerForm.touched.email && registerForm.errors.email
-            }
-            variant="standard"
-            sx={{ display: 'block', marginBottom: '1rem' }}
+            formik={registerForm}
           />
 
-          <TextField
-            fullWidth
+          <FormInput
             label="Password"
             type="password"
             name="password"
-            value={registerForm.values.password}
-            onChange={registerForm.handleChange}
-            onBlur={registerForm.handleBlur}
-            error={
-              registerForm.touched.password &&
-              Boolean(registerForm.errors.password)
-            }
-            helperText={
-              registerForm.touched.password && registerForm.errors.password
-            }
-            variant="standard"
-            sx={{ display: 'block', marginBottom: '1rem' }}
+            formik={registerForm}
           />
 
-          <TextField
-            fullWidth
+          <FormInput
             label="Confirm Password"
             type="password"
             name="rePassword"
-            value={registerForm.values.rePassword}
-            onChange={registerForm.handleChange}
-            onBlur={registerForm.handleBlur}
-            error={
-              registerForm.touched.rePassword &&
-              Boolean(registerForm.errors.rePassword)
-            }
-            helperText={
-              registerForm.touched.rePassword &&
-              registerForm.errors.rePassword
-            }
-            variant="standard"
-            sx={{ display: 'block', marginBottom: '1rem' }}
+            formik={registerForm}
           />
 
           {loading ? (
