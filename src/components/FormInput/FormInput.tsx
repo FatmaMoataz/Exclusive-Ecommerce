@@ -5,10 +5,11 @@ interface FormInputProps {
     label: string,
     name: string,
     type?: string,
-    formik: any
+    formik: any,
+    disabled?: boolean;
 }
 
-const FormInput: React.FC<FormInputProps> = ({label, name, type='text', formik}) => {
+const FormInput: React.FC<FormInputProps> = ({label, name, type='text', formik, disabled=false}) => {
     return (
 <TextField
 fullWidth
@@ -22,6 +23,7 @@ onBlur={formik.handleBlur}
  variant="standard"
  error={formik.touched[name] && Boolean(formik.errors[name])}
  helperText={formik.touched[name] && formik.errors[name]}
+ disabled={disabled}
 />
     )
 }

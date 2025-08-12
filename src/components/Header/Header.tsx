@@ -10,7 +10,8 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  InputBase
+  InputBase,
+  Divider
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
@@ -18,6 +19,9 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Popover from '@mui/material/Popover';
+import * as React from 'react';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -55,9 +59,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 
+  
+  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+    const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
@@ -109,6 +125,37 @@ export default function Header() {
             <NavLink to="/cart" style={({ isActive }) => ({ color: isActive ? 'green' : 'black' })}>
               <ShoppingCartCheckoutIcon />
             </NavLink>
+<Box
+  onMouseEnter={handlePopoverOpen}
+  onMouseLeave={handlePopoverClose}
+  sx={{ display: 'inline-block' }}
+>
+  <NavLink to="/account">
+    <AccountCircleIcon className="text-color" />
+  </NavLink>
+</Box>
+
+              <Popover
+        id="mouse-over-popover"
+        sx={{ pointerEvents: 'none' }}
+        open={open}
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        onClose={handlePopoverClose}
+        disableRestoreFocus
+        
+      >
+        <NavLink to={'/account'} style={{textDecoration:'none', color:'black', paddingInline:'1rem'}}>My Account</NavLink>
+        <Divider/>
+        <NavLink to={'/logout'} style={{textDecoration:'none', color:'black', paddingInline:'1rem'}}>Logout</NavLink>
+      </Popover>
           </Box>
         </Toolbar>
       </AppBar>
