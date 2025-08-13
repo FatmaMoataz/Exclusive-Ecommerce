@@ -117,11 +117,6 @@ const Home: FC<HomeProps> = (props) => {
   <Typography variant='h4' sx={{fontWeight:'bold'}}>Explore Our Products</Typography>
 <Box sx={{display:'flex', flexWrap:'wrap', justifyContent:'center'}}>
   <div><Products/></div>
-  <div><Products/></div>
-  <div><Products/></div>
-  <div><Products/></div>
-  <div><Products/></div>
-  <div><Products/></div>
 </Box>
     <Button sx={{backgroundColor:'#DB4444', color:'white', display:'block', margin:'auto'}}>View All Products</Button>
 </Box>

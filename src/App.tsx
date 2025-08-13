@@ -10,6 +10,7 @@ import Notfound from "./pages/Notfound/Notfound"
 import Login from "./pages/Login/Login"
 import ProductDetails from "./pages/Products/ProductDetails/ProductDetails"
 import Account from "./pages/Account/Account"
+import Products from "./pages/Products/Products"
 
 export default function App() {
   return (
@@ -22,7 +23,8 @@ export default function App() {
         <Route path="login" element={<Login />} />
         <Route path="cart" element={<Cart />} />
         <Route path="wishlist" element={<Wishlist />} />
-        <Route path="products/productDetails" element={<ProductDetails />} />
+        <Route path="products" element={<Products />} />
+        <Route path="products/productDetails/:id" element={<ProductDetails />} />
         <Route path="account" element={<Account />} />
         <Route path="*" element={<Notfound />} />
       </Route>

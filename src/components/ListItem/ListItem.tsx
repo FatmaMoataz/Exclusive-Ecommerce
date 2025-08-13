@@ -26,9 +26,6 @@ export default function ListItem () {
       <ListItemButton>
         <ListItemText primary="Electronics" />
       </ListItemButton>
-      <ListItemButton>
-        <ListItemText primary="Home & Lifestyle" />
-      </ListItemButton>
        <ListItemButton>
         <ListItemText primary="Home & Lifestyle" />
       </ListItemButton>
