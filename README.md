@@ -69,7 +69,7 @@ export default tseslint.config([
 ```
 ## Screenshots of Project
 
-![Homepage](https://github.com/user-attachments/assets/0e0800fb-81e2-4ce8-8fae-e108309d38f2)
+![Dynamic Homepage](https://github.com/user-attachments/assets/586dc029-cc76-4009-b0a9-e1aaec98b650)
 
 ![Signup](https://github.com/user-attachments/assets/63bbe068-f585-4374-be69-d774e041d92c)
 
