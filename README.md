@@ -76,3 +76,5 @@ export default tseslint.config([
 ![Login](https://github.com/user-attachments/assets/cd01288f-b40a-4082-8246-b28169b6f06b)
 
 ![NotFound](https://github.com/user-attachments/assets/97301384-bf55-432c-9a99-a69c3a993c79)
+
+![Product Details](https://github.com/user-attachments/assets/07607d56-841f-4ce6-a8f0-440fb10c2f87)
