@@ -13,6 +13,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import { NavLink } from 'react-router-dom';
 import './ProductCard.css';
+import {useWishlist} from '../../context/WishlistContext';
 
 interface ProductCardProps {
   product: {
@@ -28,6 +29,11 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+    
+
+const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
+const inWishlist = isInWishlist(product.id);
+
   return (
     <Card
       key={product.id}
@@ -59,7 +65,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <FavoriteBorderIcon sx={{ backgroundColor: 'white', borderRadius: '50%' }} />
+<FavoriteBorderIcon
+  onClick={() => {
+    inWishlist ? removeFromWishlist(product.id) : addToWishlist(product.id);
+  }}
+  sx={{
+    color: inWishlist ? '#DB4444' : 'black',
+    backgroundColor: 'white',
+    borderRadius: '50%',
+    padding: '4px',
+    cursor: 'pointer',
+  }}
+/>
+
+
           <NavLink to={`/products/productDetails/${product.id}`} style={{ color: 'black' }}>
             <RemoveRedEyeOutlinedIcon sx={{ backgroundColor: 'white', borderRadius: '50%' }} />
           </NavLink>

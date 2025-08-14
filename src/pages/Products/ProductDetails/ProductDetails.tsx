@@ -27,21 +27,6 @@ export default function ProductDetails() {
   const [product, setProduct] = useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
 
-
-  // useEffect(() => {
-  //   async function fetchProductDetails(productId: string) {
-  //     try {
-  //       const res = await axios.get(`https://fakestoreapi.com/products/${productId}`);
-  //       setProduct(res.data);
-  //     } catch (e) {
-  //       console.log("Failed to load product details", e);
-  //     }
-  //   }
-
-  //   if (id) {
-  //     fetchProductDetails(id);
-  //   }
-  // }, [id]);
   useEffect(() => {
   async function fetchProductDetailsAndRelated(productId: string) {
     try {
@@ -134,54 +119,10 @@ export default function ProductDetails() {
       </Box>
 
     </Box>
-    <Box sx={{display:'flex', columnGap:1}} className='text-color'>
+    <Box sx={{display:'flex', columnGap:1,padding:'2rem'}} className='text-color'>
       <WidgetsIcon/>
   <Typography variant="h5" sx={{fontWeight:'bold'}}>Related Items</Typography>
     </Box>
-    {/* <Box
-  sx={{
-    display: "grid",
-    gridTemplateColumns: {
-      xs: "1fr",
-      sm: "1fr 1fr",
-      md: "1fr 1fr 1fr",
-    },
-    gap: 4,
-    p: 4,
-  }}
->
-  {relatedProducts.map((item) => (
-    <Box
-      key={item.id}
-      sx={{
-        border: "1px solid #ddd",
-        borderRadius: 2,
-        padding: 2,
-        textAlign: "center",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-        transition: "transform 0.2s",
-        "&:hover": {
-          transform: "scale(1.02)",
-        },
-      }}
-    >
-      <img src={item.image} alt={item.title} style={{ height: 150, objectFit: "contain", marginBottom: 10 }} />
-      <Typography variant="subtitle1" sx={{ fontWeight: "bold", minHeight: 60 }}>
-        {item.title}
-      </Typography>
-      <Rating value={item.rating.rate} readOnly precision={0.5} size="small" />
-      <Typography variant="h6">${item.price}</Typography>
-      <Button
-        variant="contained"
-        color="primary"
-        href={`/product/${item.id}`}
-        sx={{ mt: 2, textTransform: "none" }}
-      >
-        View Product
-      </Button>
-    </Box>
-  ))}
-</Box> */}
 <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
   {relatedProducts.map((item) => (
     <ProductCard key={item.id} product={item} />
