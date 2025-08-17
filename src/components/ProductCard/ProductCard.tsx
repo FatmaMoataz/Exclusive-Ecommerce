@@ -55,7 +55,7 @@ const inWishlist = isInWishlist(product.id);
       <Box
         sx={{
           display: 'flex',
-          justifyContent: 'space-between',
+          justifyContent: 'flex-end',
           alignItems: 'center',
           position: 'absolute',
           top: 0,
@@ -64,7 +64,7 @@ const inWishlist = isInWishlist(product.id);
           padding: '1rem',
         }}
       >
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column',alignItems:'center', gap: '1rem' }}>
 <FavoriteBorderIcon
   onClick={() => {
     inWishlist ? removeFromWishlist(product.id) : addToWishlist(product.id);
