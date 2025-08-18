@@ -14,6 +14,7 @@ import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import { NavLink } from 'react-router-dom';
 import './ProductCard.css';
 import {useWishlist} from '../../context/WishlistContext';
+import { useCart } from '../../context/CartContext';
 
 interface ProductCardProps {
   product: {
@@ -29,10 +30,12 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-    
 
+  const { addToCart, isInCart, getQuantity } = useCart(); 
 const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
 const inWishlist = isInWishlist(product.id);
+const inCart = isInCart(product.id);
+const quantity = getQuantity(product.id);
 
   return (
     <Card
@@ -85,12 +88,20 @@ const inWishlist = isInWishlist(product.id);
         </Box>
       </Box>
 
-      <Button
-        sx={{ backgroundColor: 'black', color: 'white', position: 'absolute', right: 0, left: 0, opacity: 0 }}
-        className="add-to-cart-btn translateY-50"
-      >
-        Add to Cart
-      </Button>
+  <Button
+      sx={{
+        backgroundColor: inCart ? '#ccc' : 'black',
+        color: 'white',
+        position: 'absolute',
+        right: 0,
+        left: 0,
+        opacity: 0,
+      }}
+      className="translateY-50 add-to-cart-btn"
+      onClick={() => addToCart(product.id)}
+    >
+      {inCart ? `In Cart (${quantity})` : 'Add to Cart'}
+    </Button>
 
       <CardContent sx={{ position: 'relative' }}>
         <Typography gutterBottom variant="h6" component="div" noWrap>

@@ -8,6 +8,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import ProductCard from '../../../components/ProductCard/ProductCard';
+import { useCart } from "../../../context/CartContext";
 
 interface Product {
   id: number;
@@ -26,6 +27,8 @@ export default function ProductDetails() {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
+  const { addToCart, updateQuantity, getQuantity } = useCart();
+  const quantity = getQuantity(product?.id ?? 0);
 
   useEffect(() => {
   async function fetchProductDetailsAndRelated(productId: string) {
@@ -95,9 +98,9 @@ export default function ProductDetails() {
     },
   }}
 >
-  <Button>-</Button>
-  <Button sx={{paddingInline:4}}>2</Button>
-  <Button
+  <Button onClick={() => updateQuantity(product.id, quantity - 1)}>-</Button>
+  <Button sx={{ paddingInline: 4 }}>{quantity}</Button>
+  <Button  onClick={() => updateQuantity(product.id, quantity + 1)}
     variant="contained" 
     sx={{
       color: 'white',
@@ -113,7 +116,7 @@ export default function ProductDetails() {
     +
   </Button>
 </ButtonGroup>
-<Button sx={{color:'white', backgroundColor:'#DB4444', paddingInline:5, paddingBlock:1.5}}>Buy Now</Button>
+<Button onClick={() => addToCart(product.id)} sx={{color:'white', backgroundColor:'#DB4444', paddingInline:5, paddingBlock:1.5}}>Buy Now</Button>
 <FavoriteBorderIcon sx={{border:'1px solid gray', borderRadius:1, padding:1}}/>
       </Box>
       </Box>
