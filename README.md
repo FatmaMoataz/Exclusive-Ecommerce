@@ -15,3 +15,5 @@
 ![Account](https://github.com/user-attachments/assets/55ad3562-a71a-4876-bb24-afb6fae0aff0)
 
 ![Cart](https://github.com/user-attachments/assets/744eaeee-8bf1-4d69-81c2-61c144de1cf7)
+
+![Checkout](https://github.com/user-attachments/assets/7c038d20-4508-4ad9-862a-255cf59e194d)
