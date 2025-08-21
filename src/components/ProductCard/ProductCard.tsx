@@ -98,7 +98,7 @@ const quantity = getQuantity(product.id);
         opacity: 0,
       }}
       className="translateY-50 add-to-cart-btn"
-      onClick={() => addToCart(product.id)}
+      onClick={() => addToCart(product.id, product.image, product.title, product.price)}
     >
       {inCart ? `In Cart (${quantity})` : 'Add to Cart'}
     </Button>
