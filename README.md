@@ -10,6 +10,8 @@
 
 ![Product Details](https://github.com/user-attachments/assets/07607d56-841f-4ce6-a8f0-440fb10c2f87)
 
+![Wishlist](https://github.com/user-attachments/assets/ebaa88ee-2d1d-47f8-9d93-fff123f59541)
+
 ![Account](https://github.com/user-attachments/assets/55ad3562-a71a-4876-bb24-afb6fae0aff0)
 
-![Wishlist](https://github.com/user-attachments/assets/ebaa88ee-2d1d-47f8-9d93-fff123f59541)
+![Cart](https://github.com/user-attachments/assets/744eaeee-8bf1-4d69-81c2-61c144de1cf7)
