@@ -11,6 +11,7 @@ import Login from "./pages/Login/Login"
 import ProductDetails from "./pages/Products/ProductDetails/ProductDetails"
 import Account from "./pages/Account/Account"
 import Products from "./pages/Products/Products"
+import Checkout from './pages/Checkout/Checkout'
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="products" element={<Products />} />
         <Route path="products/productDetails/:id" element={<ProductDetails />} />
         <Route path="account" element={<Account />} />
+        <Route path="checkout" element={<Checkout />} />
         <Route path="*" element={<Notfound />} />
       </Route>
     </Routes>

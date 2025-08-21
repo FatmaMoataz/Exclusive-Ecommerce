@@ -155,9 +155,11 @@ export default function CartTable() {
             <Typography>Total</Typography>
             <Typography>${total.toFixed(2)}</Typography>
           </Box>
-          <Button sx={{ backgroundColor: '#DB4444', color: 'white', display: 'block', margin: 'auto' }}>
+          <NavLink to={'/checkout'} style={{textDecoration:'none'}}>
+<Button sx={{ backgroundColor: '#DB4444', color: 'white', display: 'block', margin: 'auto' }}>
             Process To Checkout
-          </Button>
+          </Button> 
+          </NavLink>
         </Box>
       </Box>
     </Box>
