@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import signup_img from '../../assets/images/signup.png';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import axios from 'axios';
-import FormInput from '../../components/FormInput/FormInput';
+import { useState } from "react";
+import signup_img from "../../assets/images/signup.png";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+import FormInput from "../../shared/FormInput/FormInput";
 
 interface LoginFormValues {
   username: string;
@@ -19,17 +19,20 @@ export default function Login() {
   const navigate = useNavigate();
 
   const initialValues: LoginFormValues = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   };
 
   async function callLogin(values: LoginFormValues) {
     try {
       setLoading(true);
-      const { data } = await axios.post(`https://fakestoreapi.com/auth/login`, values);
+      const { data } = await axios.post(
+        `https://fakestoreapi.com/auth/login`,
+        values
+      );
       console.log({ data });
       setLoading(false);
-      navigate('/');
+      navigate("/");
     } catch (error) {
       console.error("Login failed:", error);
       setLoading(false);
@@ -42,9 +45,9 @@ export default function Login() {
       .max(15, "Maximum length is 15")
       .required("Required"),
     password: Yup.string()
-      .matches(new RegExp('^[A-Z][a-z0-9]{3,8}$'), 'Invalid password')
-      .min(6, 'Minimum 6 characters')
-      .required('Required'),
+      .matches(new RegExp("^[A-Z][a-z0-9]{3,8}$"), "Invalid password")
+      .min(6, "Minimum 6 characters")
+      .required("Required"),
   });
 
   const loginForm = useFormik<LoginFormValues>({
@@ -54,61 +57,63 @@ export default function Login() {
   });
 
   return (
-    <Box sx={{
-      display: 'flex',
-      flexDirection: { sm: 'column', md: 'row' },
-      padding: '2rem',
-      alignItems: { sm: 'center', md: 'start' },
-      rowGap: { sm: '5px' },
-      justifyContent: 'center'
-    }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: { sm: "column", md: "row" },
+        padding: "2rem",
+        alignItems: { sm: "center", md: "start" },
+        rowGap: { sm: "5px" },
+        justifyContent: "center",
+      }}
+    >
       <Box>
-        <img src={signup_img} alt="login" width={'80%'} />
+        <img src={signup_img} alt="login" width={"80%"} />
       </Box>
-      <Box sx={{ marginTop: '5rem' }}>
-        <Typography variant='h4' sx={{ fontWeight: 'bold' }}>
+      <Box sx={{ marginTop: "5rem" }}>
+        <Typography variant="h4" sx={{ fontWeight: "bold" }}>
           Log in to Exclusive
         </Typography>
-        <Typography sx={{ paddingBlock: '1rem' }}>
+        <Typography sx={{ paddingBlock: "1rem" }}>
           Enter your details below
         </Typography>
         <Box component="form" onSubmit={loginForm.handleSubmit}>
-          <FormInput
-            label="Username"
-            name="username"
-            formik={loginForm}
-          />
+          <FormInput label="Username" name="username" formik={loginForm} />
           <FormInput
             label="Password"
-            type='password'
-            name='password'
+            type="password"
+            name="password"
             formik={loginForm}
           />
 
-          {
-            loading ? (
+          {loading ? (
+            <Button disabled variant="outlined">
+              Loading
+            </Button>
+          ) : (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                flexDirection: { sm: "column-reverse", md: "row" },
+                alignItems: "center",
+              }}
+            >
               <Button
-                disabled
-                variant="outlined"
+                type="submit"
+                variant="contained"
+                sx={{ backgroundColor: "#DB4444", marginTop: "1rem" }}
               >
-                Loading
+                Log in
               </Button>
-            ) : (
-              <Box sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                flexDirection: { sm: 'column-reverse', md: 'row' },
-                alignItems: 'center'
-              }}>
-                <Button type='submit' variant="contained" sx={{ backgroundColor: '#DB4444', marginTop: '1rem' }}>
-                  Log in
-                </Button>
-                <NavLink to="/forgot-password" style={{ color: '#DB4444', textDecoration: 'none' }}>
-                  Forget Password?
-                </NavLink>
-              </Box>
-            )
-          }
+              <NavLink
+                to="/forgot-password"
+                style={{ color: "#DB4444", textDecoration: "none" }}
+              >
+                Forget Password?
+              </NavLink>
+            </Box>
+          )}
         </Box>
       </Box>
     </Box>

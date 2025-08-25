@@ -1,0 +1,15 @@
+.about-card {
+    transition: all 0.5s;
+}
+.about-card:hover {
+color: white;
+background-color: #DB4444;
+border: #DB4444;
+.icon {
+    color: black;
+    background-color: white;
+}
+}
+.card-width {
+    width: 33.3%;
+}
